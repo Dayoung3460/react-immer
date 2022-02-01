@@ -19,12 +19,12 @@ function App() {
       //   [name]: [value]
       // })
       setForm (
-        produce(form, draft => {
+        produce(draft => {
           draft[name] = value
         })
       )
     },
-    [form]
+    []
   )
 
   const onSubmit = useCallback(
@@ -40,7 +40,7 @@ function App() {
       //   array: [...data.array, info]
       // })
       setData(
-        produce(data, draft => {
+        produce(draft => {
           draft.array.push(info)
         })
       )
@@ -50,7 +50,7 @@ function App() {
       })
       nextId.current += 1
     },
-    [data, form.name, form.username]
+    [form.name, form.username]
   )
 
   const onRemove = useCallback((id) => {
@@ -59,11 +59,11 @@ function App() {
     //   array: data.array.filter(info => info.id !== id)
     // })
     setData(
-      produce(data, draft => {
+      produce(draft => {
         draft.array.splice(draft.array.findIndex(info => info.id === id), 1)
       })
     )
-  }, [data])
+  }, [])
 
   return (
     <div>
